@@ -8,7 +8,10 @@
   inherit (config.opt.system) username;
   cfg = config.opt.home-manager;
 in {
-  imports = [inputs.hm.nixosModules.home-manager];
+  imports = [
+    inputs.hm.nixosModules.home-manager
+    xdg.nix
+  ];
 
   options.opt = {
     home.packages = mkOption {
