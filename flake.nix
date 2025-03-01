@@ -48,7 +48,7 @@
     } // 
     flake-utils.lib.eachDefaultSystem (system: 
       let 
-        pkgs = pkgs' system nixpkgs (attrValues overlays);
+        pkgs = pkgs' system nixpkgs (lib.attrValues overlays);
       in {
       overlays.default = overlays system;
       
