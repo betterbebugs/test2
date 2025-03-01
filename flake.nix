@@ -18,7 +18,7 @@
           ];
         };
       });
-      pkgs = pkgs' system nixpkgs ((lib.attrValues overlays) ++ [
+      pkgs = pkgs' {system = system;} nixpkgs ((lib.attrValues overlays) ++ [
         (final: prev: {
           unstable = pkgs' system nixpkgs-unstable (lib.attrValues overlays);
         })
@@ -32,7 +32,7 @@
           modules = [
             {
             nixpkgs.pkgs = pkgs;
-            networking.hostName = mkDefault name;
+            networking.hostName = lib.mkDefault name;
             }
             ./hosts/${name}
             ./modules
